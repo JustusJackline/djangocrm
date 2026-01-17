@@ -1,0 +1,24 @@
+# 1. Private Secrets (Crucial for GitHub safety)
+.env
+
+# 2. Virtual Environments (Prevents uploading thousands of library files)
+env/
+venv/
+ENV/
+
+# 3. Python internals (Automatically generated files that clutter your code)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 4. Django specific (Local files that don't belong on GitHub)
+db.sqlite3
+*.log
+media/
+staticfiles/
+
+# 5. Editor specific (Settings for VS Code or PyCharm)
+.vscode/
+.idea/
+.DS_Store
