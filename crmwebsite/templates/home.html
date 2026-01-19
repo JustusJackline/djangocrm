@@ -1,8 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="col-md-6 offset-md-3">
+
    {% if user.is_authenticated %}
-   <h2>Welcome {{ user.first_name }}</h2>
+  
+   {% if records %}
+ 
+   <h3>Customer Records</h3>
+
+
+                   <table class="table table table-hover table table-bordered">
+  <thead> 
+
+
+
+    <tr class="table-dark ">
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">State</th>
+      <th scope="col">city</th>
+      <th scope="col">zipcode</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for record in records %}
+    <tr class="table-primary ">
+      <th scope="row"><a href="{% url 'record' record.id %}">{{record.id}}</a></th>
+      <td>{{record.first_name}} {{record.last_name}}</td>
+      <td>{{record.phone}}</td>
+      <td>{{record.email}}</td>
+      <td>{{record.address}}</td>
+      <td>{{record.state}}</td>
+      <td>{{record.city}}</td>
+      <td>{{record.zip_code}}</td>
+    </tr>
+     {% endfor %}
+  </tbody>
+</table>
+  
+   {% endif %}
+
+<button type="button"
+ class="btn btn-outline-success"
+ onclick="location.href='{% url 'add_record' %}'">Add Record</button>
+
 
    {% else %}
 <h1>LOG IN</h1>
@@ -22,6 +65,9 @@
   <button type="submit" class="btn btn-primary">Login</button>
   
 </form>
-</div>
+<button type="button"
+ class="btn btn-outline-success"
+ onclick="location.href='{% url 'add_record' %}'">Add Record</button>
+
 {% endif %}
  {% endblock %}

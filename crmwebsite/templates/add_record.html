@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+   {% if user.is_authenticated %}
+  
+   <h3>Add record</h3>
+
+    <form method="POST" action="{% url 'add_record' %}">
+     {% csrf_token %}
+     {{ form.as_p}}
+     <button type="submit"
+ class="btn btn-outline-success"
+ >Submit Record</button>
+    </form>
+{% endif %}
+    {% endblock %}
